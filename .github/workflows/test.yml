@@ -7,9 +7,9 @@ on:
     # branches: ['main']
 
 jobs:
-  build-deploy:
+  build:
+    name: Build the Angular app
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -25,25 +25,21 @@ jobs:
       - name: Run tests
         run: |
           npm run test -- --watch=false --browsers=ChromeHeadless || true
-
-      #   - name: Run tests
-      #     run: npm run test -- --watch=false --browsers=ChromeHeadless
-
       - name: Build Angular app
         run: npm run build --if-present
 
-    #   - name: Install Vercel CLI
-    #     run: npm install -g vercelme: Install Vercel CLI
-    #     run: npm install -g vercel
+  deploy-dev:
+    name: Deploy to Development
+    runs-on: ubuntu-latest
+    needs: [build]
 
-    #   - name: Deploy to Vercel
-    #     run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
-    #     env:
-    #       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-    #       VERCEL
-
-    #   - name: Deploy to Vercel
-    #     run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
-    #     env:
-    #       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-    #       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - name: Development deploy step
+        run: |
+          echo "Deploying to development..."
+          sleep 5s
+          echo "Deploying to development...1"
+          sleep 5s
+          echo "Deploying to development...2"
+          sleep 5s
+          echo "Deployment complete!"
