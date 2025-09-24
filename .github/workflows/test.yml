@@ -2,9 +2,9 @@ name: Angular 19 CI/CD with Vercel
 
 on:
   push:
-    branches: ['main']
+    branches: ['develop']
   pull_request:
-    branches: ['main']
+    # branches: ['main']
 
 jobs:
   build-deploy:
@@ -30,7 +30,14 @@ jobs:
         run: npm run build --if-present
 
     #   - name: Install Vercel CLI
+    #     run: npm install -g vercelme: Install Vercel CLI
     #     run: npm install -g vercel
+
+    #   - name: Deploy to Vercel
+    #     run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
+    #     env:
+    #       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+    #       VERCEL
 
     #   - name: Deploy to Vercel
     #     run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
