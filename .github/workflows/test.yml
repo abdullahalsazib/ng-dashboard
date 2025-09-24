@@ -43,3 +43,18 @@ jobs:
           echo "Deploying to development...2"
           sleep 5s
           echo "Deployment complete!"
+  deploy-dev2:
+    name: Deploy to Development
+    runs-on: ubuntu-latest
+    needs: [build, deploy-dev]
+
+    steps:
+      - name: Development deploy 2 step
+        run: |
+          echo "Deploying to development..."
+          sleep 5s
+          echo "Deploying to development...1"
+          sleep 5s
+          echo "Deploying to development...2"
+          sleep 5s
+          echo "Deployment complete!"
