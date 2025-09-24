@@ -2,9 +2,9 @@ name: Angular 19 CI/CD with Vercel
 
 on:
   push:
-    branches: ['main']
+    branches: ['develop', 'main']
   pull_request:
-    branches: ['develop']
+    # branches: ['develop']
 
 jobs:
   build:
