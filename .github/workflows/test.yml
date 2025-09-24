@@ -1,0 +1,39 @@
+name: Angular 19 CI/CD with Vercel
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm run test -- --watch=false --browsers=ChromeHeadless
+
+      - name: Build Angular app
+        run: npm run build --if-present
+
+    #   - name: Install Vercel CLI
+    #     run: npm install -g vercel
+
+    #   - name: Deploy to Vercel
+    #     run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
+    #     env:
+    #       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+    #       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
