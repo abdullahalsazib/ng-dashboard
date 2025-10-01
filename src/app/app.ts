@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { Home } from './components/home/home';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BlogEditor } from './components/blog-editor/blog-editor';
 
 @Component({
   selector: 'app-root',
-  imports: [Home],
+  imports: [BlogEditor, FontAwesomeModule],
   templateUrl: './app.html',
 })
 export class App {}
